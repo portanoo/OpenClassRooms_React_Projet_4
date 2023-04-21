@@ -210,7 +210,7 @@ input {
 }
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
+  font-size: 0.5em;
   color: #e54858;
   display: block;
   margin-top: 7px;
@@ -322,7 +322,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-confirmation {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -525,5 +526,17 @@ footer {
   to {
     opacity: 1;
   }
+}
+
+/* form Confirmation */
+.formConfirmation {
+  display: none;
+  text-align: center;
+  flex-direction: column;
+  height: 65vh;
+  margin-bottom: 60px;
+}
+.formConfirmation p {
+  margin: auto;
 }
 

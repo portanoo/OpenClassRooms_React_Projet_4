@@ -10,6 +10,7 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
+const modalConfirmationBtn = document.querySelector(".btn-confirmation");
 const modalCloseBtn = document.querySelector(".close");
 const formData = document.querySelectorAll(".formData");
 const form = document.querySelector('form[name="reserve"]');
@@ -65,6 +66,10 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // close modal event
 modalCloseBtn.addEventListener("click", closeModal);
 
+// clode modal confirmation event
+modalConfirmationBtn.addEventListener("click", closeModalConfirmation);
+
+
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
@@ -73,6 +78,11 @@ function launchModal() {
 // close modal form
 function closeModal() {
   modalbg.style.display = "none";
+}
+
+// close modal formConfirmation
+function closeModalConfirmation() {
+  form.submit();
 }
 
 // Keep data to make some controls before submit
@@ -114,7 +124,8 @@ function validateForm(form) {
         && formValues.tournamentLocation.isValid
         && formValues.quantity.isValid
       ) {
-        form.submit();
+          form.style.display = "none";
+          document.querySelector(".formConfirmation").style.display = "flex";
       } else {
         Object.keys(formValues).forEach((key) => {
           if (!formValues[key].isValid) {
