@@ -26,7 +26,7 @@ const birthdate = document.querySelector("#birthdate");
 const tournamentLocation = document.getElementsByName("location");
 const termsOfUsage = document.querySelector("#termsOfUsage");
 
-// Define pattern value used to check input values
+// Input Validation Patterns
 const inputPatterns = {
   email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi,
   firstname: /^[a-zA-Z-ÀÁÂÃÄÅÇÑñÇçÈÉÊËÌÍÎÏÒÓÔÕÖØÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöøùúûüýÿ -]{2,}$/,
@@ -37,7 +37,7 @@ const inputPatterns = {
 };
 
 
-// Store input controls 
+// Store input values 
 const formValues = {
   firstname: {value: null, isValid: null, errorMessage: "Veuillez entrer 2 caractères ou plus pour prénom."},
   lastname: {value: null, isValid: null, errorMessage: "Veuillez entrer 2 caractères ou plus pour le nom."},
@@ -61,13 +61,13 @@ tournamentLocation.forEach((input) => input.addEventListener('change', () => {
 }))
 
 
-// launch modal event
+// Modal launch event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// close modal event
+// Modal close event
 modalCloseBtn.addEventListener("click", closeModal);
 
-// clode modal confirmation event
+// Modal confirmation close event
 modalConfirmationBtn.addEventListener("click", closeModalConfirmation);
 
 
@@ -86,7 +86,7 @@ function closeModalConfirmation() {
   form.submit();
 }
 
-// Keep data to make some controls before submit
+// Prevent form submission by default
 formElements[0].addEventListener('submit', (e) => {
   e.preventDefault();
 });
@@ -113,7 +113,7 @@ function removeErrorMessage(inputElement) {
   }
 }
 
-// Validate form
+// Form Validation
 function validateForm(form) {
   if (
         formValues.firstname.isValid
@@ -136,6 +136,7 @@ function validateForm(form) {
       }
   }
 
+// Tournament Location Validation
 function verifTournamentLocation() {
   let isTournamentLocationValid = 0
   tournamentLocation.forEach((location) => {
@@ -154,6 +155,7 @@ function verifTournamentLocation() {
   }
 }
 
+// Text Input Validation
 function inputTextValidation(input) {
   const inputName = input.name;
   const inputValue = input.value;
@@ -170,6 +172,7 @@ function inputTextValidation(input) {
   }
 }
 
+// Checkbox Validation
 function inputCheckBoxValidation(input) {
   const inputName = input.name;
   const inputValue = input.checked;
@@ -184,6 +187,7 @@ function inputCheckBoxValidation(input) {
   }
 }
 
+// Store input Result
 function storeInputResult(inputName, isValid) {
   switch (inputName) {
           case 'notification':
