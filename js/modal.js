@@ -29,12 +29,13 @@ const termsOfUsage = document.querySelector("#termsOfUsage");
 // Define pattern value used to check input values
 const inputPatterns = {
   email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi,
-  firstname: /^[a-zA-Z-ÀÁÂÃÄÅÇÑñÇçÈÉÊËÌÍÎÏÒÓÔÕÖØÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöøùúûüýÿ -]{2,}$/gi,
-  lastname: /^[a-zA-Z-ÀÁÂÃÄÅÇÑñÇçÈÉÊËÌÍÎÏÒÓÔÕÖØÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöøùúûüýÿ -]{2,}$/gi,
+  firstname: /^[a-zA-Z-ÀÁÂÃÄÅÇÑñÇçÈÉÊËÌÍÎÏÒÓÔÕÖØÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöøùúûüýÿ -]{2,}$/,
+  lastname: /^[a-zA-Z-ÀÁÂÃÄÅÇÑñÇçÈÉÊËÌÍÎÏÒÓÔÕÖØÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöøùúûüýÿ -]{2,}$/,
   birthdate: /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/gi,
   quantity: /[0-9]{1,3}$/,
   tournamentLocation: /^[a-zA-Z -]{3,}$/
 };
+
 
 // Store input controls 
 const formValues = {
