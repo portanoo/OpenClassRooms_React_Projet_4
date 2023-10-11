@@ -26,16 +26,16 @@ const birthdate = document.querySelector("#birthdate");
 const tournamentLocation = document.getElementsByName("location");
 const termsOfUsage = document.querySelector("#termsOfUsage");
 
+
 // Input Validation Patterns
 const inputPatterns = {
-  email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi,
+  email: /^[A-Za-z0-9\.\-_]+@[a-zA-Z]+\.[a-z]{2,4}$/,
   firstname: /^[a-zA-Z-ÀÁÂÃÄÅÇÑñÇçÈÉÊËÌÍÎÏÒÓÔÕÖØÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöøùúûüýÿ -]{2,}$/,
   lastname: /^[a-zA-Z-ÀÁÂÃÄÅÇÑñÇçÈÉÊËÌÍÎÏÒÓÔÕÖØÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöøùúûüýÿ -]{2,}$/,
   birthdate: /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/gi,
   quantity: /[0-9]{1,3}$/,
   tournamentLocation: /^[a-zA-Z -]{3,}$/
 };
-
 
 // Store input values 
 const formValues = {
@@ -87,9 +87,9 @@ function closeModalConfirmation() {
 }
 
 // Prevent form submission by default
-formElements[0].addEventListener('submit', (e) => {
-  e.preventDefault();
-});
+form.addEventListener("submit", (event) => {
+  event.preventDefault()
+})
 
 // Display errorMessage
 function addErrorMessage(inputElement) {
@@ -127,6 +127,8 @@ function validateForm(form) {
       ) {
           form.style.display = "none";
           document.querySelector(".formConfirmation").style.display = "flex";
+          modalCloseBtn.style.display = "none";
+          console.log(formValues);
       } else {
         Object.keys(formValues).forEach((key) => {
           if (!formValues[key].isValid) {
@@ -159,7 +161,6 @@ function verifTournamentLocation() {
 function inputTextValidation(input) {
   const inputName = input.name;
   const inputValue = input.value;
-  console.log(inputName);
   let isValid = inputPatterns[inputName].test(inputValue);
   if (isValid) {
     storeInputResult(inputName, isValid);
